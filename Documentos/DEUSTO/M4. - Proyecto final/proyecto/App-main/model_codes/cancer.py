@@ -34,4 +34,4 @@ print("---------------------")
 print(clf_report)
 print("_____________________")
 
-joblib.dump(model,r"../Breast_CancerAPI/cancer_model.pkl")
+joblib.dump(model,r"../cancer_model.pkl")

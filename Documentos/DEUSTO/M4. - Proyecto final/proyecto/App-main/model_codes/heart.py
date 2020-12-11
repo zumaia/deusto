@@ -33,9 +33,9 @@ y_pred = model.predict(X_test)
 print('Precisión : {}'.format(accuracy_score(y_test, y_pred)))
 
 clf_report = classification_report(y_test, y_pred)
-print('Infore de clasificación')
+print('Informe de clasificación')
 print("---------------------")
 print(clf_report)
 print("_____________________")
 
-joblib.dump(model,r"../Heart_API/heart_model.pkl")
+joblib.dump(model,r"../heart_model.pkl")

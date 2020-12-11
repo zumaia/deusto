@@ -3,11 +3,16 @@ import joblib
 from flask import request
 import numpy as np
 
+
 app = Flask(__name__, template_folder='templates')
 
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/disclimer")
+def disclimer():
+    return render_template("disclimer.html")
 
 # cancer
 @app.route("/Breast_CancerAPI")
@@ -23,7 +28,7 @@ def ValuePredictor1(to_predict_list, size):
 
 
 #Cancer
-@app.route('/predict1', methods = ["POST"])
+@app.route('/predict', methods = ["POST"])
 def predict1():
     if request.method == "POST":
         to_predict_list = request.form.to_dict()
@@ -34,10 +39,10 @@ def predict1():
             result = ValuePredictor1(to_predict_list,5)
     
     if(int(result)==1):
-        prediction = "Creo que tienes altas las posibilidades de contraer la enfermedad.                 Por favor, consulte a su médico inmediatamente"
+        prediction = "Tienes, probablemente, altas las posibilidades.                 Por favor, consulte a su médico."
     else:
-        prediction = "No hay necesidad de temer.            No tienes síntomas peligrosos de la enfermedad.                No obstante te recomiendo que realices una consulta a tu médico."
-    return(render_template("result.html", prediction_text=prediction)) 
+        prediction = "No debes de preocuparte.                     No obstante, en caso de duda, te recomiendo que realices una consulta a tu médico."
+    return(render_template("result.html", prediction_text=prediction))  
 
 
 
@@ -70,9 +75,9 @@ def predict2():
             result = ValuePredictor2(to_predict_list,6)
     
     if(int(result)==1):
-        prediction = "Creo que tienes altas las posibilidades de contraer la enfermedad.                 Por favor, consulte a su médico inmediatamente"
+        prediction = "Tienes, probablemente, altas las posibilidades.                 Por favor, consulte a su médico."
     else:
-        prediction = "No hay necesidad de temer.            No tienes síntomas peligrosos de la enfermedad.                No obstante te recomiendo que realices una consulta a tu médico."
+        prediction = "No debes de preocuparte.                     No obstante, en caso de duda, te recomiendo que realices una consulta a tu médico."
     return(render_template("result.html", prediction_text=prediction))     
 
 
@@ -191,5 +196,4 @@ def predict5():
 
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+

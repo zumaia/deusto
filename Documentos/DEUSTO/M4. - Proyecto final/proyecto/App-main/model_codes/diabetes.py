@@ -43,4 +43,4 @@ print("---------------------")
 print(clf_report)
 print("_____________________")
 
-joblib.dump(model,r"../Diabetes_API/diabetes_model.pkl")
+joblib.dump(model,r"../diabetes_model.pkl")
